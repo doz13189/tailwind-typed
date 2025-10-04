@@ -1,9 +1,8 @@
 {
   "name": "tailwind-typed",
   "version": "0.1.1",
+  "type": "module",
   "description": "Type-safe Tailwind CSS class names",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
@@ -20,9 +19,17 @@
   "author": "Takahiro Kato",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^24.6.2",
+    "tailwindcss": "^4.0.0",
     "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "cac": "^6.7.14"
+  }
 }
