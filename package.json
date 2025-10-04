@@ -1,0 +1,28 @@
+{
+  "name": "tailwind-typed",
+  "version": "0.1.0",
+  "description": "Type-safe Tailwind CSS class names",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doz13189/tailwind-typed.git"
+  },
+  "keywords": [
+    "tailwindcss",
+    "typescript",
+    "type-safe"
+  ],
+  "author": "Takahiro Kato",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "5.9.3"
+  },
+  "files": [
+    "dist"
+  ]
+}
