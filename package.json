@@ -7,6 +7,9 @@
     "build": "tsc",
     "prepublishOnly": "npm run build"
   },
+  "bin": {
+    "tailwind-typed": "./dist/cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/doz13189/tailwind-typed.git"
