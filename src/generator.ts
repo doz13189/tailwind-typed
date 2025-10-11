@@ -1,3 +1,4 @@
+import path from "path";
 import fs from "fs/promises";
 import { writeFileSync, mkdirSync } from "fs";
 import { resolve, dirname } from "path";
@@ -16,9 +17,34 @@ export async function generateTypes(options: GeneratorOptions) {
     console.log(`🔍 Loading Tailwind config: ${configPath}`);
 
     // REF: https://github.com/tailwindlabs/tailwindcss/blob/2f1cbbfed28729798eebdaa57935e8f7b0c622e1/packages/tailwindcss/src/intellisense.test.ts#L173-L186
-    // const cssContent = await fs.readFile(configPath, "utf-8");
+    const cssContent = await fs.readFile(configPath, "utf-8");
 
-    const design = await tailwindcss.__unstable__loadDesignSystem(configPath);
+    let design = await tailwindcss.__unstable__loadDesignSystem(cssContent, {
+      loadStylesheet: async (id, _) => {
+        if (id === "tailwindcss") {
+          const themeCssPath = path.join(
+            process.cwd(),
+            "node_modules",
+            "tailwindcss",
+            "theme.css"
+          );
+          // const resolvedPath = path.resolve(path.dirname(themeCssPath), id);
+          const content = await fs.readFile(themeCssPath, "utf-8");
+
+          return {
+            path: themeCssPath, // for what?
+            base: path.dirname(themeCssPath), // for what?
+            content: content,
+          };
+        }
+
+        return {
+          path: "",
+          base: "",
+          content: "",
+        };
+      },
+    });
 
     const classList = design.getClassList();
 
