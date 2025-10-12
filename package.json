@@ -1,6 +1,6 @@
 {
   "name": "tailwind-typed",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "type": "module",
   "description": "Type-safe Tailwind CSS class names",
   "scripts": {
